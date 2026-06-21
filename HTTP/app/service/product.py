@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from typing import List,Dict
+
 data_file = Path(__file__).parent.parent / "data" / "products.json"
 
 def load_products() -> List[Dict]:
