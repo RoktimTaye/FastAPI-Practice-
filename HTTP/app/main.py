@@ -1,5 +1,6 @@
-from fastapi import FastAPI,HTTPException,Query,Path  # ty:ignore[unresolved-import]
+from fastapi import FastAPI,HTTPException,Query,Path  
 from service.product import get_all_products
+from schema.product import Product
 app = FastAPI()
 
 @app.get("/")
@@ -51,3 +52,7 @@ def get_products(id: int):
         return products[id]
     else:
         raise HTTPException(status_code=404, detail="No product found")
+
+@app.post("/products",status_code=201)
+def create_product(product:Product):
+    return product
